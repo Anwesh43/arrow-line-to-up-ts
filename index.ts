@@ -43,7 +43,7 @@ class DrawingUtil {
         for (var j = 0; j < 2; j++) {
             context.save()
             context.scale(1 - 2 * j, 1)
-            DrawingUtil.drawLine(context, 0, -size / 2, -size * sc1, -size / 2 - size * sc1)
+            DrawingUtil.drawLine(context, 0, -size / 2, -size * sc1, -size / 2 + size * sc1)
             context.save()
             context.translate(-size / 2, (h / 2) * (1 - sc2))
             DrawingUtil.drawLine(context, 0, 0, 0, size)
@@ -147,7 +147,7 @@ class ALTUNode {
     state : State = new State()
 
     constructor(private i : number) {
-
+        this.addNeighbor()
     }
 
     addNeighbor() {
