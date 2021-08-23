@@ -199,3 +199,25 @@ class ArrowLineToUp {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    altu : ArrowLineToUp = new ArrowLineToUp()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.altu.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.altu.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.altu.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
